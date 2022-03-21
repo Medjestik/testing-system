@@ -1,0 +1,105 @@
+.login__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.login__form-line {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: var(--white-color);
+  border-radius: 100px;
+  margin-bottom: 35px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+  position: relative;
+}
+.login__input {
+  width: 100%;
+  justify-content: space-between;
+  padding: 15px 30px;
+  border-radius: 100px;
+  border: none;
+  outline: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.15px;
+  color: var(--title-color);
+  letter-spacing: 1.2px;
+  border: 2px solid var(--white-color);
+  transition: .3s ease-in-out;
+}
+.login__input:focus {
+  border: 2px solid var(--main-color);
+}
+.login__input-error {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  position: absolute;
+  color: var(--main-color);
+  top: calc(100% + 10px);
+  left: 28px;
+  opacity: 0;
+  transition: .3s ease-in-out;
+}
+.login__input-error_active {
+  opacity: 1;
+}
+.login__submit {
+  position: relative;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.login__submit-error {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.15px;
+  color: var(--main-color);
+  transition: all .3s ease-in-out;
+}
+.login__submit-error_type_show {
+  opacity: 1;
+}
+.login__submit-error_type_hide {
+  opacity: 0;
+}
+.login__submit-button {
+  margin-top: 25px;
+  width: 100%;
+  background-color: var(--main-color);
+  color: var(--white-color);
+  box-sizing: border-box;
+  border: none;
+  border-radius: 10px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  letter-spacing: 1.4px;
+  padding: 17.5px 77.5px;
+  outline: none;
+  transition: all .3s ease-in-out;
+  position: relative;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+}
+.login__submit-button:hover {
+  cursor: pointer;
+  opacity: .7;
+}
+.login__submit-button_type_block {
+  pointer-events: none;
+  user-select: none;
+  background-color: var(--white-color);
+  color: var(--background-third-color);
+}

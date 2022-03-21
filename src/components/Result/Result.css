@@ -1,0 +1,19 @@
+.result__list {
+  margin: 20px 0px 80px 0px;
+  list-style-type: none;
+  padding: 0px;
+}
+.result__pagination {
+  margin: 20px 0px 0px 0px;
+}
+.result__pagination-btn {
+  margin: 0px 15px 0px 0px;
+  background-color: var(--title-color);
+  padding: 6.5px 15px 6px 15px;
+  max-width: max-content;
+}
+.result__pagination-btn_type_block {
+  user-select: none;
+  pointer-events: none;
+  background-color: var(--background-third-color);
+}

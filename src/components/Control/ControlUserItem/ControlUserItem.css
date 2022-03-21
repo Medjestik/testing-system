@@ -1,0 +1,116 @@
+.control-user__list {
+  padding: 0px;
+  margin: 30px 0px 0px 0px;
+  list-style-type: none;
+}
+.control-user__item {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white-color);
+  border: 2px solid var(--border-card-color);
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 100%;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+  padding: 30px 40px;
+  margin: 0px 0px 20px;
+  transition: .3s ease-in-out;
+}
+.control-user__container {
+  display: flex;
+  justify-content: space-between;
+}
+.control-user__section-info {
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+}
+.control-user__name {
+  margin: 0px 0px 20px 0px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.25;
+  text-align: left;
+  color: var(--title-color);
+}
+.control-user__info-list {
+  display: flex;
+  margin: auto 0px 0px 0px;
+  position: relative;
+}
+.control-user__info-item {
+  padding-left: 40px;
+  margin: 0px 35px 10px 0px;
+  position: relative;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  text-align: left;
+  color: var(--title-color);
+  min-width: 160px;
+}
+.control-user__info-item:last-of-type {
+  margin: 0px 0px 10px 0px;
+}
+.control-user__info-item_type_division::before {
+  content: "";
+  background-image: url('../../../images/division.png');
+  background-size: 30px;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 0px;
+  top: -5px;
+  z-index: 5;
+}
+.control-user__info-item_type_position::before {
+  content: "";
+  background-image: url('../../../images/position.png');
+  background-size: 30px;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 0px;
+  top: -5px;
+  z-index: 5;
+}
+.control-user__info-item_type_filial::before {
+  content: "";
+  background-image: url('../../../images/filial.png');
+  background-size: 30px;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 0px;
+  top: -5px;
+  z-index: 5;
+}
+.control-user__section-data {
+  margin: 0px 0px 0px 50px;
+  flex-shrink: 0;
+}
+.control-user__data-title {
+  margin: 0px 0px 10px 0px;
+  position: relative;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.25;
+  text-align: right;
+  color: var(--title-color);
+}
+.control-user__control {
+  width: 100%;
+  margin: 10px 0px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+.control-user__btn-edit {
+  margin: 10px 0px 0px 0px;
+}
+.control-user__btn-export {
+  margin: 10px 0px 0px 20px;
+}
