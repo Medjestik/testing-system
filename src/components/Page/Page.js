@@ -23,7 +23,7 @@ function Page({ onLogin, loginError, onHideLoginError, isLoadingLogin }) {
       <section className='page__section'>
         <div className='page__container'>
           <img className='page__logo' src={logo} alt="логотип РЖД"></img>
-          <h1 className='page__title'>Комплексная система тестирования по вопросам ОТ при назначении на должность</h1> LoginPopup
+          <h1 className='page__title'>Комплексная система тестирования по вопросам ОТ при назначении на должность</h1>
           <Login
             onLogin={onLogin}
             loginError={loginError}
