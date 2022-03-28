@@ -43,7 +43,9 @@ function ControlUserAddPopup({ isOpen, onClose, onAdd, isLoading, isShowError, f
       email: mail,
     }
 
-    onAdd(newUser, onClose);
+    console.log(newUser);
+
+    //onAdd(newUser, onClose);
   }
 
   function handleAddFirstname(e) {
@@ -259,7 +261,11 @@ function ControlUserAddPopup({ isOpen, onClose, onAdd, isLoading, isShowError, f
             <span className={`popup__input-error ${errorPosition ? "popup__input-error_type_show" : ""}`}>Введите корректную должность</span>
           </li>
 
-          <li className={`popup__item-input`}>
+          {
+            filial.length === 1 ?
+            <div></div>
+            :
+            <li className={`popup__item-input`}>
               <h5 className="popup__input-name">Филиал*</h5>
               <div className="select-wrapper">
                 <select           
@@ -269,7 +275,7 @@ function ControlUserAddPopup({ isOpen, onClose, onAdd, isLoading, isShowError, f
                 defaultValue={filialId}
                 required   
                 >
-                  <option value={filial.length === 1 ? filial[0].id : "placeholder"} disabled hidden>Выберите филиал</option>
+                  <option value="placeholder" disabled hidden>Выберите филиал</option>
                   {
                     filial.map((fil) => (
                       <option key={fil.id} value={fil.id}>{fil.name}</option>
@@ -280,8 +286,13 @@ function ControlUserAddPopup({ isOpen, onClose, onAdd, isLoading, isShowError, f
                 <div className="select-arrow"></div>
               </div>
             </li>
-
-          <li className={`popup__item-input`}>
+          }
+        
+          {
+            roles.length === 1 ?
+            <div></div>
+            :
+            <li className={`popup__item-input`}>
               <h5 className="popup__input-name">Роль*</h5>
               <div className="select-wrapper">
                 <select           
@@ -291,7 +302,7 @@ function ControlUserAddPopup({ isOpen, onClose, onAdd, isLoading, isShowError, f
                 defaultValue={roleId}
                 required   
                 >
-                  <option value={roles.length === 1 ? roles[0].id : "placeholder"} disabled hidden>Выберите роль</option>
+                  <option value="placeholder" disabled hidden>Выберите роль</option>
                   {
                     roles.map((role) => (
                       <option key={role.id} value={role.id}>{role.name}</option>
@@ -302,7 +313,12 @@ function ControlUserAddPopup({ isOpen, onClose, onAdd, isLoading, isShowError, f
                 <div className="select-arrow"></div>
               </div>
             </li>
+          }
 
+          {
+            tests.length === 1 ?
+            <div></div>
+            :
             <li className={`popup__item-input`}>
               <h5 className="popup__input-name">Тестирование*</h5>
               <div className="select-wrapper">
@@ -313,7 +329,7 @@ function ControlUserAddPopup({ isOpen, onClose, onAdd, isLoading, isShowError, f
                 defaultValue={testId}
                 required   
                 >
-                  <option value={tests.length === 1 ? tests[0].id : "placeholder"} disabled hidden>Выберите тестирование</option>
+                  <option value="placeholder" disabled hidden>Выберите тестирование</option>
                   {
                     tests.map((test) => (
                       <option key={test.id} value={test.id}>{test.name}</option>
@@ -324,7 +340,8 @@ function ControlUserAddPopup({ isOpen, onClose, onAdd, isLoading, isShowError, f
                 <div className="select-arrow"></div>
               </div>
             </li>
-
+          }
+            
             <li className="popup__item-input">
               <h5 className="popup__input-name">Количество попыток*</h5>
               <input 
