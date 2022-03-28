@@ -43,9 +43,7 @@ function ControlUserAddPopup({ isOpen, onClose, onAdd, isLoading, isShowError, f
       email: mail,
     }
 
-    console.log(newUser);
-
-    //onAdd(newUser, onClose);
+    onAdd(newUser, onClose);
   }
 
   function handleAddFirstname(e) {

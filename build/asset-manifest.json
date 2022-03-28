@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.928c6c50.css",
-    "main.js": "/static/js/main.c6ae44c5.js",
+    "main.js": "/static/js/main.9263a8f5.js",
     "static/js/787.c4630d3a.chunk.js": "/static/js/787.c4630d3a.chunk.js",
     "static/media/background-page.jpg": "/static/media/background-page.d534928eceed37e0838c.jpg",
     "static/media/Robotomediumitalic.ttf": "/static/media/Robotomediumitalic.35abcf5eb54b0c398e52.ttf",
@@ -43,11 +43,11 @@
     "static/media/rzd-logo.png": "/static/media/rzd-logo.7a43063fd1bebd69c88d.png",
     "index.html": "/index.html",
     "main.928c6c50.css.map": "/static/css/main.928c6c50.css.map",
-    "main.c6ae44c5.js.map": "/static/js/main.c6ae44c5.js.map",
+    "main.9263a8f5.js.map": "/static/js/main.9263a8f5.js.map",
     "787.c4630d3a.chunk.js.map": "/static/js/787.c4630d3a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.928c6c50.css",
-    "static/js/main.c6ae44c5.js"
+    "static/js/main.9263a8f5.js"
   ]
 }
