@@ -13,9 +13,9 @@ function ControlUserAddPopup({ isOpen, onClose, onAdd, isLoading, isShowError, f
   const [errorDivision, setErrorDivision] = React.useState(false);
   const [position, setPosition] = React.useState("");
   const [errorPosition, setErrorPosition] = React.useState(false);
-  const [filialId, setFilialId] = React.useState("placeholder");
-  const [roleId, setRoleId] = React.useState("placeholder");
-  const [testId, setTestId] = React.useState("placeholder");
+  const [filialId, setFilialId] = React.useState(filial.length === 1 ? filial[0].id : "placeholder");
+  const [roleId, setRoleId] = React.useState(roles.length === 1 ? roles[0].id : "placeholder");
+  const [testId, setTestId] = React.useState(tests.length === 1 ? tests[0].id : "placeholder");
   const [attempts, setAttempts] = React.useState(1);
   const [errorAttempts, setErrorAttempts] = React.useState(false);
   const [practiceAttempts, setPracticeAttempts] = React.useState(false);
@@ -131,9 +131,9 @@ function ControlUserAddPopup({ isOpen, onClose, onAdd, isLoading, isShowError, f
     setErrorPosition(false);
     setDivision("");
     setErrorDivision(false);
-    setFilialId("placeholder");
-    setRoleId("placeholder");
-    setTestId("placeholder");
+    setFilialId(filial.length === 1 ? filial[0].id : "placeholder");
+    setRoleId(roles.length === 1 ? roles[0].id : "placeholder");
+    setTestId(tests.length === 1 ? tests[0].id : "placeholder");
     setAttempts(1);
     setErrorAttempts(false);
     setPracticeAttempts(false);
@@ -141,7 +141,7 @@ function ControlUserAddPopup({ isOpen, onClose, onAdd, isLoading, isShowError, f
     setPhone("");
     setMail("");
     setIsBlockSubmitButton(true);
-  }, [isOpen]);
+  }, [isOpen, filial, roles, tests]);
 
   React.useEffect(() => {
     if (

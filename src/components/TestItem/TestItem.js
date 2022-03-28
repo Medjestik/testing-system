@@ -50,8 +50,10 @@ function TestItem({ item, onScreenPhoto }) {
               determinePhoto(item)
             }
             {
-              item.useTrain &&
+              item.useTrain ?
               <a className='btn test-item__btn-try' target="_blank" rel="noreferrer" href="https://kst-api.emiit.ru/train/index.html">Тренировка</a>
+              :
+              <div></div>
             }
           </div>
         </div>
