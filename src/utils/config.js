@@ -1,1 +1,1 @@
-export const API_URL = 'https://kst.emiit.ru:8888/api';
+export const API_URL = 'https://kst.emiit.ru/api';

@@ -17,7 +17,7 @@ function Footer() {
             <p className='footer__contact-caption'>+7 (499) 653-55-16</p>
           </li>
         </ul>
-        <p className='footer__copy'>&copy; 2021 Все права защищены, ИЭФ РУТ (МИИТ)</p>
+        <p className='footer__copy'>&copy; 2021 Все права защищены</p>
       </div>
     
     </footer>
