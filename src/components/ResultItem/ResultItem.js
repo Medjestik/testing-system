@@ -10,6 +10,8 @@ function ResultItem({ result }) {
 
   const user = React.useContext(CurrentUserContext);
 
+  console.log(result);
+
   function toggleProgramPerformers () {
     setIsShowPerformers(!isShowPerformers);
   }
@@ -29,9 +31,12 @@ function ResultItem({ result }) {
           <div className='result-item__control'>
             {
               result.tests[0].attempts.length > 0 &&
+              <>
               <button className={`btn result-item__btn-attempt ${isShowPerformers ? 'result-item__btn-attempt_type_show' : 'result-item__btn-attempt_type_hide'}`} type='button' onClick={toggleProgramPerformers}>Показать попытки</button>
+              <a className='btn result-item__btn-export' target='_blank' rel='noreferrer' href={`${API_URL}/users/${result.id}/tests/${result.tests[0].id}/protocol`}>Экспорт результатов</a>
+              </>
             }
-            <a className='btn result-item__btn-export' target='_blank' rel='noreferrer' href={`${API_URL}/users/${user.id}/tests/${result.tests[0].id}/protocol`}>Экспорт результатов</a>
+
           </div>
         </div>
 
