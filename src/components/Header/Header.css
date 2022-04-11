@@ -83,3 +83,18 @@
   top: 8px;
   z-index: 5;
 }
+
+@media all and (max-width: 750px) {
+  .header__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 12px;
+  }
+  .header__name {
+    margin: 20px auto 0px;
+  }
+  .header__btn {
+    margin: 20px auto 0px; 
+  }
+}

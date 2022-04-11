@@ -264,3 +264,11 @@ html {
 .checkbox:hover input:checked + span:after {
   transform: scale(0);
 }
+
+@media all and (max-width: 750px) {
+  .container {
+    width: 100%;
+    padding: 0px 12px;
+    box-sizing: border-box;
+  }
+}

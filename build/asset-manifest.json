@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.928c6c50.css",
-    "main.js": "/static/js/main.825b0c86.js",
+    "main.css": "/static/css/main.617028a4.css",
+    "main.js": "/static/js/main.9e60733a.js",
     "static/js/787.c4630d3a.chunk.js": "/static/js/787.c4630d3a.chunk.js",
     "static/media/background-page.jpg": "/static/media/background-page.d534928eceed37e0838c.jpg",
     "static/media/Robotomediumitalic.ttf": "/static/media/Robotomediumitalic.35abcf5eb54b0c398e52.ttf",
@@ -42,12 +42,12 @@
     "static/media/Robotothin.woff2": "/static/media/Robotothin.30581100ea069d04b86a.woff2",
     "static/media/rzd-logo.png": "/static/media/rzd-logo.7a43063fd1bebd69c88d.png",
     "index.html": "/index.html",
-    "main.928c6c50.css.map": "/static/css/main.928c6c50.css.map",
-    "main.825b0c86.js.map": "/static/js/main.825b0c86.js.map",
+    "main.617028a4.css.map": "/static/css/main.617028a4.css.map",
+    "main.9e60733a.js.map": "/static/js/main.9e60733a.js.map",
     "787.c4630d3a.chunk.js.map": "/static/js/787.c4630d3a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.928c6c50.css",
-    "static/js/main.825b0c86.js"
+    "static/css/main.617028a4.css",
+    "static/js/main.9e60733a.js"
   ]
 }

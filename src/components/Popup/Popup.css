@@ -24,6 +24,7 @@
 .popup__container {
   margin: 15vh auto 0px;
   padding: 34px 36px 28px;
+  box-sizing: border-box;
   width: max-content;
   min-height: 114px;
   max-height: 70vh;
@@ -168,4 +169,17 @@
 }
 .popup__submit-error_type_hide {
   opacity: 0;
+}
+
+@media all and (max-width: 750px) {
+  .popup__container {
+    margin: 5vh 20px 0px;
+    padding: 20px 18px 16px;
+    width: calc(100% - 40px);
+    min-height: 114px;
+    max-height: 70vh;
+  }
+  .popup__form {
+    width: 100%;
+  }
 }

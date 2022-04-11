@@ -103,3 +103,19 @@
   background-color: var(--white-color);
   color: var(--background-third-color);
 }
+
+@media all and (max-width: 750px) {
+  .login__input {
+    padding: 8px 18px;
+    font-size: 16px;
+  }
+  .login__input::placeholder {
+    font-size: 14px;
+  }
+  .login__submit-button {
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 12.5px 40px;
+  }
+}

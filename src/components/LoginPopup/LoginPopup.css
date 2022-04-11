@@ -1,3 +1,9 @@
 .login-popup {
   margin: 30px 0px 0px 0px;
 }
+
+@media all and (max-width: 750px) {
+  .login-popup {
+    margin: 50px 0px 0px 0px;
+  }
+}

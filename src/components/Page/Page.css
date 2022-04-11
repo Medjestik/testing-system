@@ -104,3 +104,39 @@
   text-align: center;
   color: var(--title-color);
 }
+
+@media all and (max-width: 750px) {
+  .page__img {
+    display: none;
+  }
+  .page__section {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    align-items: flex-start;
+  }
+  .page__container {
+    position: relative;
+    padding: 18px 25px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .page__logo {
+    margin: 0px 0px 40px 0px;
+    height: 30px;
+    object-fit: contain;
+    object-position: center;
+    user-select: none;
+    pointer-events: none;
+  }
+  .page__title {
+    margin: 0px 0px 50px 0px;
+    font-weight: 700;
+    font-size: 24px;
+  }
+}
