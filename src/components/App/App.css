@@ -271,4 +271,14 @@ html {
     padding: 0px 12px;
     box-sizing: border-box;
   }
+  .select-wrapper {
+    width: 100%;
+  }
+  .select-wrapper > select {
+    font-size: 14px;
+  }
+  .checkbox input + span {
+    font-size: 14px;
+    padding-top: 3px;
+  }
 }
