@@ -27,7 +27,7 @@ function Login({ onLogin, loginError, onHideLoginError, isLoadingLogin }) {
     }
     else {
       setErrorLogin({
-          errorText: 'Логин должен содержать более 2 символов',
+          errorText: 'Поле не может быть пустым',
           error: true
       });
     }
@@ -44,7 +44,7 @@ function Login({ onLogin, loginError, onHideLoginError, isLoadingLogin }) {
     }
     else {
         setErrorPassword({
-            errorText: 'Пароль должен содержать более 6 символов',
+            errorText: 'Поле не может быть пустым',
             error: true
         });
     }  
@@ -77,19 +77,19 @@ function Login({ onLogin, loginError, onHideLoginError, isLoadingLogin }) {
 
 
   return (
-    <form className="login__form" name="login-form" action="#" noValidate onSubmit={handleSubmit}>
+    <form className="login__form" name="login-form" action="#" noValidate onSubmit={handleSubmit} autoComplete='off'>
       <div className="login__form-line">
         <input 
           className="login__input"
-          placeholder="Введите логин"
-          minLength="2"
+          placeholder="Введите логин.."
+          minLength="1"
           type="text" 
           id="login"
           name="login" 
           value={login}
           onChange={handleChangeEmail}
           required
-          autoComplete='true'
+          autoComplete='off'
         >
         </input>
         <span className={`login__input-error ${errorLogin.error ? "login__input-error_active" : ""}`}>
@@ -99,15 +99,15 @@ function Login({ onLogin, loginError, onHideLoginError, isLoadingLogin }) {
       <div className="login__form-line">
         <input 
           className="login__input"
-          placeholder="Введите пароль"
-          minLength="6"
+          placeholder="Введите пароль.."
+          minLength="1"
           type="password"
           id="password"
           name="password"
           value={password}
           onChange={handleChangePassword}
           required
-          autoComplete='true'
+          autoComplete='new-password'
         >
         </input>
         <span className={`login__input-error ${errorPassword.error ? "login__input-error_active" : ""}`}>
@@ -115,7 +115,7 @@ function Login({ onLogin, loginError, onHideLoginError, isLoadingLogin }) {
         </span>
       </div>
       <div className="login__submit">
-        <span className={`login__submit-error ${loginError ? "login__submit-error_type_show" : "login__submit-error_type_hide"}`}>
+        <span className={`login__submit-error ${loginError ? "login__submit-error_type_show" : "login__submit-error_type_hide"}`}> 
           Неправильный логин или пароль
         </span>
         <button 

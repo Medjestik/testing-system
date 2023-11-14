@@ -10,28 +10,40 @@
   width: 100%;
   display: flex;
   align-items: center;
-  width: 100%;
   background-color: var(--white-color);
   border-radius: 100px;
   margin-bottom: 35px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
   position: relative;
 }
+.login__title {
+  margin: 0px;
+  color: var(--title-color);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+}
 .login__input {
   width: 100%;
   justify-content: space-between;
-  padding: 15px 30px;
+  padding: 12px 20px;
   border-radius: 100px;
   border: none;
   outline: none;
   font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.15px;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
   color: var(--title-color);
   letter-spacing: 1.2px;
   border: 2px solid var(--white-color);
   transition: .3s ease-in-out;
+}
+.login__input::placeholder {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--subtitle-color);
 }
 .login__input:focus {
   border: 2px solid var(--main-color);
@@ -40,7 +52,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
-  line-height: 15px;
+  line-height: 14px;
   position: absolute;
   color: var(--main-color);
   top: calc(100% + 10px);
@@ -80,14 +92,14 @@
   color: var(--white-color);
   box-sizing: border-box;
   border: none;
-  border-radius: 10px;
+  border-radius: 100px;
   font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 25px;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
   text-align: center;
   letter-spacing: 1.4px;
-  padding: 17.5px 77.5px;
+  padding: 17.5px 22.5px;
   outline: none;
   transition: all .3s ease-in-out;
   position: relative;

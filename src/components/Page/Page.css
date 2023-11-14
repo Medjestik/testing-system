@@ -49,13 +49,96 @@
   pointer-events: none;
 }
 .page__title {
-  margin: 0px 0px 50px 0px;
-  font-weight: 700;
+  margin: 0px 0px 12px 0px;
+  font-weight: bold;
   font-size: 32px;
   font-style: normal;
   line-height: 1.15;
   text-align: center;
   color: var(--title-color);
+}
+.page__subtitle {
+  margin: 20px 0px 12px 0px;
+  font-weight: normal;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--title-color);
+}
+.page__roles {
+  width: 100%;
+  margin: 0px 0px 30px 0px;
+  display: flex;
+  align-items: center;
+}
+.page__role {
+  width: 100%;
+  margin: 0px 8px 0px 0px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--main-color);
+  background-color: var(--main-color);
+  border-radius: 100px;
+  transition: all .3s ease-in-out;
+}
+.page__role:last-of-type {
+  margin: 0px;
+}
+.page__role:hover {
+  cursor: pointer;
+  opacity: .7;
+}
+.page__role_status_active {
+  background-color: var(--white-color);
+  user-select: none;
+  pointer-events: none;
+}
+.page__role-name {
+  margin: 0px;
+  color: var(--white-color);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 1.2px;
+  transition: all .3s ease-in-out;
+}
+.page__role_status_active .page__role-name {
+  color: var(--title-color);
+}
+.page__role-icon {
+  margin: 0px 8px 0px 0px;
+  width: 16px;
+  height: 16px;
+  transition: all .3s ease-in-out;
+}
+.page__role-icon_type_user {
+  background-image: url('../../images/icons/main-white/user.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+.page__role_status_active .page__role-icon_type_user {
+  background-image: url('../../images/icons/main-black/user.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+.page__role-icon_type_moderator {
+  background-image: url('../../images/icons/main-white/shield.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+.page__role_status_active .page__role-icon_type_moderator {
+  background-image: url('../../images/icons/main-black/shield.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px;
 }
 .page__caption {
   margin: 20px 0px 0px 0px;

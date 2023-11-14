@@ -1,0 +1,17 @@
+.pagination {
+  margin: 0px;
+  display: flex;
+}
+.pagination__list {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+.pagination__item {
+  margin: 0px 8px 0px 0px;
+}
+.pagination__item:last-of-type {
+  margin: 0px;
+}

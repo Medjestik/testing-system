@@ -6,7 +6,7 @@
 
 .preloader {
   color: var(--subtitle-color);
-  background-color: var(--background-main-color);
+  background-color: var(--white-color);
   box-sizing: border-box;
   font-family: 'Raleway', Arial, sans-serif;
   font-weight: normal;

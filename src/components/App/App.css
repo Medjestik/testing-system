@@ -34,21 +34,102 @@ html {
   scroll-behavior: smooth;
 }
 .container {
-  max-width: 1280px;
+  max-width: 1440px;
+  width: 100%;
   margin: 0px auto;
 }
+.btn-icon {
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  color: var(--white-color);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  background: var(--slider-color);
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+}
+.btn-icon::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+.btn-icon_margin_left {
+  margin: 0px 0px 0px 12px;
+}
+.btn-icon_color_accent-red {
+  color: var(--white-color);
+  background: var(--main-color);
+}
+.btn-icon_color_accent-red:hover {
+  cursor: pointer;
+  user-select: auto;
+  pointer-events: all;
+  opacity: .8;
+  box-shadow: 0px 8px 12px -8px rgba(226,26,26, 0.9);
+}
+.btn-icon_color_accent-orange {
+  color: var(--white-color);
+  background: var(--fourth-light-color);
+}
+.btn-icon_color_accent-orange:hover {
+  cursor: pointer;
+  user-select: auto;
+  pointer-events: all;
+  opacity: .8;
+  box-shadow: 0px 8px 12px -8px rgba(213, 102, 0, 0.9);
+}
+.btn-icon_type_edit::after  {
+  background-image: url('../../images/icons/main-white/edit.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.btn-icon_type_download::after   {
+  background-image: url('../../images/icons/main-white/download.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.btn-icon_type_next::after   {
+  background-image: url('../../images/icons/main-white/arrow.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotate(270deg);
+}
+.btn-icon_type_prev::after   {
+  background-image: url('../../images/icons/main-white/arrow.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotate(90deg);
+}
+.btn-icon_type_block {
+  background: var(--border-card-color);
+  pointer-events: none;
+  cursor: not-allowed;
+}
 .btn {
-  margin: 10px auto 0px 0px;
+  margin: 0px;
   color: var(--white-color);
   box-sizing: border-box;
   border: none;
   border-radius: 5px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: bold;
   font-size: 16px;
-  line-height: 25px;
+  line-height: 20px;
   text-align: center;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   padding: 10px 45px 10px 15px;
   outline: none;
   transition: .3s ease-in-out;
@@ -69,7 +150,7 @@ html {
   height: 20px;
   position: absolute;
   right: 12px;
-  top: 13px;
+  top: 11px;
   z-index: 5;
   transition: .3s ease-in-out;
 }

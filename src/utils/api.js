@@ -56,8 +56,56 @@ export const getTests = ({ token }) => {
   .then(res => handleResponse(res))
 };
 
-export const getControl = ({ token }) => {
+export const getControlUsers = ({ token }) => {
   return fetch(`${API_URL}/control`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(res => handleResponse(res))
+};
+
+export const getControlTests = ({ token }) => {
+  return fetch(`${API_URL}/tests`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(res => handleResponse(res))
+};
+
+export const getControlFilials = ({ token }) => {
+  return fetch(`${API_URL}/filials`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(res => handleResponse(res))
+};
+
+export const getControlRoles = ({ token }) => {
+  return fetch(`${API_URL}/roles`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(res => handleResponse(res))
+};
+
+export const getPageData = ({ token, link }) => {
+  return fetch(`${link}`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
@@ -120,7 +168,8 @@ export const getResult = ({ token }) => {
 };
 
 export const getPage = ({ token, link }) => {
-  return fetch(`${link}`, {
+  const replace = link.replace('https://192.168.2.2/api', {API_URL})
+  return fetch(`${replace}`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
