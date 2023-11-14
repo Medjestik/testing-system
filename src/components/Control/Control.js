@@ -51,7 +51,7 @@ function Control() {
     const token = localStorage.getItem("token");
     api.addUser({ token: token, user: user })
     .then((res) => {
-      setUsers([...users, res.data]);
+      setUsers({...users, data: [res.data, ...users.data]});
       closeControlPopups();
     })
     .catch((err) => {
@@ -164,7 +164,7 @@ function Control() {
                   </div>
                   <div className='table__column table__column_type_header table__column_type_btn table__column_type_btn-header'>
                     <div className='btn-icon'></div>
-                    <div className='btn-icon btn-icon_margin_left'></div>
+                    <div className='btn-icon'></div>
                   </div>
                 </div>
                 <ul className={`table__main`}>
