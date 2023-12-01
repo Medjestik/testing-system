@@ -20,6 +20,18 @@ export const login = ({ login, password }) => {
   .then(res => handleResponse(res));
 };
 
+export const loginUser = ({ name, code }) => {
+  return fetch(`${API_URL}/test_login`, {
+    method: 'POST', 
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name, code })
+  })
+  .then(res => handleResponse(res));
+};
+
 export const logout = ({ token }) => {
   return fetch(`${API_URL}/logout`, {
     method: 'POST',
@@ -142,6 +154,31 @@ export const editUser = ({ token, user }) => {
   .then(res => handleResponse(res));
 };
 
+export const changePassword = ({ token, password }) => {
+  return fetch(`${API_URL}/users/update_password`, {
+    method: 'PATCH', 
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify({ password  })
+  })
+  .then(res => handleResponse(res));
+};
+
+export const resetPassword = ({ token, user }) => {
+  return fetch(`${API_URL}/users/${user.id}/reset_password`, {
+    method: 'POST', 
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+  })
+  .then(res => handleResponse(res));
+};
+
 export const addPhoto = ({ token, test, photo }) => {
   return fetch(`${API_URL}/test/${test.id}/photo`, {
     method: 'POST', 
@@ -167,6 +204,18 @@ export const getResult = ({ token }) => {
   .then(res => handleResponse(res))
 };
 
+export const getPageResult = ({ token, link }) => {
+  return fetch(`${link}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(res => handleResponse(res))
+};
+
 export const getPage = ({ token, link }) => {
   const replace = link.replace('https://192.168.2.2/api', {API_URL})
   return fetch(`${replace}`, {
@@ -178,4 +227,77 @@ export const getPage = ({ token, link }) => {
     }
   })
   .then(res => handleResponse(res))
+};
+
+export const searchPage = ({ token, searchText }) => {
+  return fetch(`${API_URL}/control?search=${searchText}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(res => handleResponse(res))
+};
+
+export const getLogs = ({ token }) => {
+  return fetch(`${API_URL}/logs`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(res => handleResponse(res))
+};
+
+export const getReports = ({ token, year }) => {
+  return fetch(`${API_URL}/report?year=${year}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(res => handleResponse(res))
+};
+
+export const getPageLogs = ({ token, link }) => {
+  return fetch(`${link}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(res => handleResponse(res))
+};
+
+export const removeLogs = ({ token }) => {
+  return fetch(`${API_URL}/logs/delete_old_logs?days=90`, {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(res => handleResponse(res))
+};
+
+export const adminRequest = ({ token, query }) => {
+  return fetch(`${API_URL}/sql`, {
+    method: 'POST', 
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify({ query })
+  })
+  .then(res => handleResponse(res));
 };

@@ -10,8 +10,6 @@ function ResultItem({ result }) {
 
   const user = React.useContext(CurrentUserContext);
 
-  console.log(result);
-
   function toggleProgramPerformers () {
     setIsShowPerformers(!isShowPerformers);
   }

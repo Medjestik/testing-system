@@ -81,7 +81,7 @@ function LoginUser({ onLogin, loginError, onHideLoginError, isLoadingLogin }) {
       <div className="login__form-line">
         <input 
           className="login__input"
-          placeholder="Введите ваше ФИО.."
+          placeholder="Введите ваше фамилию.."
           minLength="1"
           type="text" 
           id="login-name"

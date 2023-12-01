@@ -107,6 +107,7 @@
   transition: .3s ease-in-out;
 }
 .popup__item-input {
+  width: 100%;
   margin: 0px 0px 15px 0px;
   padding: 0px 0px 25px 0px;
   position: relative;
@@ -154,6 +155,37 @@
 .popup__input-error_type_show {
   opacity: 1;
 }
+.popup__btn-save {
+  margin: 20px 0px 0px 0px;
+  width: 100%;
+  padding: 11px;
+  background: var(--main-color);
+  border: none;
+  border-radius: 8px;
+  color: var(--white-color);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  transition: all .3s ease-in-out;
+}
+.popup__btn-save:hover  {
+  cursor: pointer;
+  opacity: .8;
+  /*box-shadow: 0px 8px 12px -8px rgba(0, 55, 196, 0.9);*/
+}
+.popup__btn-save_type_block {
+  background: var(--border-card-color);
+  cursor: default;
+  user-select: none;
+  pointer-events: none;
+}
+.popup__btn-save_type_loading {
+  background: var(--fourth-light-color);
+  cursor: default;
+  user-select: none;
+  pointer-events: none;
+}
 .popup__submit-error {
   margin: 20px 0px 0px 0px;
   text-align: center;
@@ -169,6 +201,60 @@
 }
 .popup__submit-error_type_hide {
   opacity: 0;
+}
+
+.popup__textarea {
+  resize: none;
+  width: 100%;
+  min-height: 160px;
+  padding: 9px 16px 9px 16px;
+  border: 2px solid var(--border-card-color);
+  margin: 8px 0px 0px 0px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--title-color);
+  box-sizing: border-box;
+  outline: none;
+  background: var(--white-color);
+  border-radius: 8px;
+  transition: all .3s ease-in-out;
+  overflow-y: auto;
+}
+.popup__textarea:hover {
+  border: 2px solid var(--main-color);
+}
+.popup__textarea:active {
+  border: 2px solid var(--main-color);
+}
+.popup__textarea:focus {
+  border: 2px solid var(--main-color);
+}
+.popup__textarea_type_block {
+  user-select: none;
+  pointer-events: none;
+}
+.popup__textarea::placeholder {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--border-card-color);
+}
+.popup__textarea_height_minimal {
+  max-height: 80px;
+  min-height: 80px;
+}
+.popup__textarea_height_small {
+  max-height: 160px;
+}
+.popup__textarea_height_medium {
+  max-height: 300px;
+}
+.popup__textarea_height_max {
+  max-height: 100%;
+  height: 100%;
 }
 
 @media all and (max-width: 750px) {
@@ -206,5 +292,4 @@
   .popup__submit-error {
     margin: 0px;
   }
- 
 }

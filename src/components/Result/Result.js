@@ -74,7 +74,6 @@ function Result() {
 
   return (
     <div className='result'>
-      <h3 className='main__subtitle'>Результаты</h3>
       {
         isLoadingResult 
         ?

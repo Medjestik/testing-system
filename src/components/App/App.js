@@ -34,6 +34,22 @@ function App() {
     });
   }
 
+  function handleLoginUser({ name, code }) {
+    setLoginError(false);
+    setIsLoadingLogin(true);
+    api.loginUser({ name, code })
+    .then((res) => {
+      localStorage.setItem("token", res.access_token);
+      tokenCheck();
+    })
+    .catch((err) => {
+      setLoginError(true);
+    })
+    .finally(() => {
+      setIsLoadingLogin(false);
+    });
+  }
+
   function handleHideLoginError() {
     setLoginError(false);
   }
@@ -97,6 +113,7 @@ function App() {
           <Route exact path="/" element={
             <Page 
               onLogin={handleLogin}
+              onLoginUser={handleLoginUser}
               loginError={loginError}
               onHideLoginError={handleHideLoginError}
               isLoadingLogin={isLoadingLogin}

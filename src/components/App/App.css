@@ -101,6 +101,12 @@ html {
   background-position: center;
   background-repeat: no-repeat;
 }
+.btn-icon_type_first::after   {
+  background-image: url('../../images/icons/main-white/double-arrow.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotate(180deg);
+}
 .btn-icon_type_next::after   {
   background-image: url('../../images/icons/main-white/arrow.svg');
   background-position: center;
@@ -112,6 +118,16 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   transform: rotate(90deg);
+}
+.btn-icon_type_last::after   {
+  background-image: url('../../images/icons/main-white/double-arrow.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.btn-icon_type_pass::after   {
+  background-image: url('../../images/icons/main-white/shield.svg');
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .btn-icon_type_block {
   background: var(--border-card-color);
@@ -134,6 +150,7 @@ html {
   outline: none;
   transition: .3s ease-in-out;
   position: relative;
+  flex-shrink: 0;
 }
 .btn:hover {
   opacity: .6;
@@ -165,7 +182,7 @@ html {
   height: 20px;
   position: absolute;
   right: 12px;
-  top: 13px;
+  top: 11px;
   z-index: 5;
   transition: .3s ease-in-out;
 }
@@ -181,7 +198,7 @@ html {
   height: 20px;
   position: absolute;
   right: 12px;
-  top: 13px;
+  top: 11px;
 }
 .btn_type_export {
   background-color: var(--title-color);
@@ -197,7 +214,7 @@ html {
   height: 20px;
   position: absolute;
   right: 12px;
-  top: 13px;
+  top: 11px;
 }
 .btn_type_block {
   user-select: none;
@@ -209,6 +226,60 @@ html {
   pointer-events: none !important;
   user-select: none !important;
   background-color: var(--background-third-color) !important;
+}
+.btn_margin-left_auto {
+  margin-left: auto;
+}
+.btn_margin-left_20 {
+  margin-left: 20px;
+}
+.search {
+  background: var(--background-third-color);
+  border: none;
+  border: 2px solid var(--border-card-color);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  box-sizing: border-box;
+  color: var(--title-color);
+  font-size: 14px;
+  line-height: 18px;
+  font-style: normal;
+  font-weight: normal;
+  margin: 0px 0px 0px 20px;
+  outline: none;
+  padding: 8px 11px;
+  transition: all .3s ease-in-out;
+  width: 100%;
+}
+.search:focus {
+  border: 2px solid var(--fourth-light-color);
+}
+.search:hover {
+  border: 2px solid var(--fourth-light-color);
+}
+.search-btn {
+  margin: 0px 20px 0px 0px;
+  color: var(--white-color);
+  box-sizing: border-box;
+  border: none;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 1.2px;
+  padding: 10px 16px 10px 16px;
+  background-color: var(--fourth-light-color);
+  outline: none;
+  transition: .3s ease-in-out;
+  position: relative;
+  flex-shrink: 0;
+}
+.search-btn:hover {
+  cursor: pointer;
+  opacity: .7;
 }
 .ReactCollapse--collapse {
   transition: height 500ms;

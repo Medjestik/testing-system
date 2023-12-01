@@ -4,6 +4,7 @@ import * as api from '../../utils/api.js';
 import Preloader from '../Preloader/Preloader.js';
 import ControlUserAddPopup from './ControlUserAddPopup/ControlUserAddPopup.js';
 import ControlUserEditPopup from './ControlUserEditPopup/ControlUserEditPopup.js';
+import ResetPasswordPopup from '../Popup/ResetPasswordPopup/ResetPasswordPopup.js';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import { API_URL } from '../../utils/config.js';
 import Table from '../Table/Table.js';
@@ -11,8 +12,11 @@ import Pagination from '../Pagination/Pagination.js';
 
 function Control() {
 
+  const [searchText, setSearchText] = React.useState('');
+
   const [isAddUserPopupOpen, setIsAddUserPopupOpen] = React.useState(false);
   const [isEditUserPopupOpen, setIsEditUserPopupOpen] = React.useState(false);
+  const [isResetPasswordPopupOpen, setIsResetPasswordPopupOpen] = React.useState(false);
 
   const [isLoadingControl, setIsLoadingControl] = React.useState(true);
   const [isLoadingRequest, setIsLoadingRequest] = React.useState(false);
@@ -33,6 +37,25 @@ function Control() {
     const token = localStorage.getItem("token");
     api.getPageData({ token: token, link: link })
     .then((res) => {
+      setUsers(res);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => setIsLoadingPage(false));
+  }
+
+  function handleChangeSearch(e) {
+    setSearchText(e.target.value);
+  }
+
+  function onSearch() {
+    setIsLoadingPage(true);
+    console.log(searchText);
+    const token = localStorage.getItem("token");
+    api.searchPage({ token: token, searchText: searchText })
+    .then((res) => {
+      console.log(res);
       setUsers(res);
     })
     .catch((err) => {
@@ -83,11 +106,30 @@ function Control() {
     .finally(() => setIsLoadingRequest(false));
   }
 
+  function openResetPasswordPopup(user) {
+    setIsResetPasswordPopupOpen(true);
+    setCurrentUser(user);
+  }
+
+  function handleResetPassword(user) {
+    setIsLoadingRequest(true);
+    const token = localStorage.getItem("token");
+    api.resetPassword({ token: token, user: user })
+    .then((res) => {
+      console.log(res);
+      closeControlPopups();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => setIsLoadingRequest(false));
+  }
 
   function closeControlPopups() {
     setIsShowErrorRequest({text: "", isShow: false});
     setIsAddUserPopupOpen(false);
     setIsEditUserPopupOpen(false);
+    setIsResetPasswordPopupOpen(false);
     //setIsRemoveUserPopupOpen(false);
   }
 
@@ -137,6 +179,8 @@ function Control() {
         <> 
           <div className='section__header'>
             <Pagination data={users} onChoose={getPage} />
+            <input className='search' id='control-search' name='control-search' value={searchText} onChange={handleChangeSearch} placeholder='Введите текст запроса..'></input>
+            <button className='search-btn' onClick={onSearch}>Поиск</button>
             <button className="btn btn_type_add" type="button" onClick={openAddUserPopup}>Добавить пользователя</button>
           </div>
 
@@ -164,6 +208,7 @@ function Control() {
                   </div>
                   <div className='table__column table__column_type_header table__column_type_btn table__column_type_btn-header'>
                     <div className='btn-icon'></div>
+                    <div className='btn-icon btn-icon_margin_left'></div>
                     <div className='btn-icon'></div>
                   </div>
                 </div>
@@ -191,6 +236,7 @@ function Control() {
                         </div>
                         <div className='table__column table__column_type_btn'>
                           <button className='btn-icon btn-icon_color_accent-orange btn-icon_type_edit' type='button' onClick={() => openEditUserPopup(user)}></button>
+                          <button className='btn-icon btn-icon_margin_left btn-icon_color_accent-orange btn-icon_type_pass' type='button' onClick={() => openResetPasswordPopup(user)}></button>
                           <a className='btn-icon btn-icon_margin_left btn-icon_color_accent-red btn-icon_type_download' target='_blank' rel='noreferrer' href={`${API_URL}/users/${user.id}/data`}> </a>
                         </div>
                       </li>
@@ -234,6 +280,16 @@ function Control() {
         tests={tests}
         currentUser={currentUser}
         user={user}
+      />
+    }
+    {
+      isResetPasswordPopupOpen &&
+      <ResetPasswordPopup
+        isOpen={isResetPasswordPopupOpen}
+        onClose={closeControlPopups}
+        onConfirm={handleResetPassword} 
+        item={currentUser} 
+        isLoadingRequest={isLoadingRequest}
       />
     }
     </>
