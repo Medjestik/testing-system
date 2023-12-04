@@ -178,7 +178,7 @@ function ControlUserEditPopup({ isOpen, onClose, onEdit, isLoading, isShowError,
             <h5 className="popup__input-name">Фамилия*</h5>
             <input 
             className="popup__input"
-            placeholder="введите фамилию пользователя"
+            placeholder="введите фамилию"
             type="text"
             id="edit-new-user-lastname"
             name="edit-new-user-lastname"
@@ -195,7 +195,7 @@ function ControlUserEditPopup({ isOpen, onClose, onEdit, isLoading, isShowError,
             <h5 className="popup__input-name">Имя*</h5>
             <input 
             className="popup__input"
-            placeholder="введите имя пользователя"
+            placeholder="введите имя"
             type="text"
             id="edit-new-user-firstname"
             name="edit-new-user-firstname"
@@ -212,7 +212,7 @@ function ControlUserEditPopup({ isOpen, onClose, onEdit, isLoading, isShowError,
             <h5 className="popup__input-name">Отчество*</h5>
             <input 
             className="popup__input"
-            placeholder="введите отчество пользователя"
+            placeholder="введите отчество"
             type="text"
             id="edit-new-user-middlename"
             name="edit-new-user-middlename"

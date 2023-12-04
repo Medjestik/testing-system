@@ -177,7 +177,7 @@ function ControlUserAddPopup({ isOpen, onClose, onAdd, isLoading, isShowError, f
             <h5 className="popup__input-name">Фамилия*</h5>
             <input 
             className="popup__input"
-            placeholder="введите фамилию пользователя"
+            placeholder="введите фамилию"
             type="text"
             id="add-new-user-lastname"
             name="add-new-user-lastname"
@@ -194,7 +194,7 @@ function ControlUserAddPopup({ isOpen, onClose, onAdd, isLoading, isShowError, f
             <h5 className="popup__input-name">Имя*</h5>
             <input 
             className="popup__input"
-            placeholder="введите имя пользователя"
+            placeholder="введите имя"
             type="text"
             id="add-new-user-firstname"
             name="add-new-user-firstname"
@@ -211,7 +211,7 @@ function ControlUserAddPopup({ isOpen, onClose, onAdd, isLoading, isShowError, f
             <h5 className="popup__input-name">Отчество*</h5>
             <input 
             className="popup__input"
-            placeholder="введите отчество пользователя"
+            placeholder="введите отчество"
             type="text"
             id="add-new-user-middlename"
             name="add-new-user-middlename"

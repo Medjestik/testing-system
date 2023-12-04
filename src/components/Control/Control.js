@@ -181,7 +181,7 @@ function Control() {
             <Pagination data={users} onChoose={getPage} />
             <input className='search' id='control-search' name='control-search' value={searchText} onChange={handleChangeSearch} placeholder='Введите текст запроса..'></input>
             <button className='search-btn' onClick={onSearch}>Поиск</button>
-            <button className="btn btn_type_add" type="button" onClick={openAddUserPopup}>Добавить пользователя</button>
+            <button className="btn btn_type_add" type="button" onClick={openAddUserPopup}>{user.role_id === 3 ? 'Добавить пользователя' : 'Добавить тестируемого'}</button>
           </div>
 
           {
@@ -208,7 +208,10 @@ function Control() {
                   </div>
                   <div className='table__column table__column_type_header table__column_type_btn table__column_type_btn-header'>
                     <div className='btn-icon'></div>
-                    <div className='btn-icon btn-icon_margin_left'></div>
+                    {
+                      user.id === 3 &&
+                      <div className='btn-icon btn-icon_margin_left'></div>
+                    }
                     <div className='btn-icon'></div>
                   </div>
                 </div>
@@ -236,7 +239,10 @@ function Control() {
                         </div>
                         <div className='table__column table__column_type_btn'>
                           <button className='btn-icon btn-icon_color_accent-orange btn-icon_type_edit' type='button' onClick={() => openEditUserPopup(user)}></button>
-                          <button className='btn-icon btn-icon_margin_left btn-icon_color_accent-orange btn-icon_type_pass' type='button' onClick={() => openResetPasswordPopup(user)}></button>
+                          {
+                            user.id === 3 &&
+                            <button className='btn-icon btn-icon_margin_left btn-icon_color_accent-orange btn-icon_type_pass' type='button' onClick={() => openResetPasswordPopup(user)}></button>
+                          }
                           <a className='btn-icon btn-icon_margin_left btn-icon_color_accent-red btn-icon_type_download' target='_blank' rel='noreferrer' href={`${API_URL}/users/${user.id}/data`}> </a>
                         </div>
                       </li>

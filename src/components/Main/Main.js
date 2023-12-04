@@ -18,31 +18,7 @@ function Main({ loggedIn, onLogout }) {
 
   const user = React.useContext(CurrentUserContext);
 
-  const [isOpenChangePasswordPopup, setIsOpenChangePasswordPopup] = React.useState(user.change_password === 1 ? true : false); 
-
-  const [isLoadingRequest, setIsLoadingRequest] = React.useState(false);
-
-  function handleChangePassword(password) {
-    setIsLoadingRequest(true);
-    const token = localStorage.getItem("token");
-    api.changePassword({ token: token, password: password })
-    .then((res) => {
-      //setUsers({...users, data: [res.data, ...users.data]});
-      setIsOpenChangePasswordPopup(false);
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .finally(() => setIsLoadingRequest(false));
-  }
-
-  function defineTabs(id) {
-    if (id === 3) {
-      return tabsUser;
-    } else {
-      return tabsHeadAdmin;
-    }
-  }
+  console.log(user);
 
   const tabsHeadAdmin = [
     {
@@ -67,12 +43,55 @@ function Main({ loggedIn, onLogout }) {
     },
   ]
 
+  const tabsAdmin = [
+    {
+      title: 'Тестирование',
+      link: '/main/test'
+    },
+    {
+      title: 'Результаты',
+      link: '/main/result'
+    },
+    {
+      title: 'Управление',
+      link: '/main/control'
+    },
+  ]
+
   const tabsUser = [
     {
       title: 'Тестирование',
       link: '/main/test'
     },
   ]
+
+  const [isOpenChangePasswordPopup, setIsOpenChangePasswordPopup] = React.useState(user.change_password === 1 ? true : false); 
+
+  const [isLoadingRequest, setIsLoadingRequest] = React.useState(false);
+
+  function handleChangePassword(password) {
+    setIsLoadingRequest(true);
+    const token = localStorage.getItem("token");
+    api.changePassword({ token: token, password: password })
+    .then((res) => {
+      //setUsers({...users, data: [res.data, ...users.data]});
+      setIsOpenChangePasswordPopup(false);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => setIsLoadingRequest(false));
+  }
+
+  function defineTabs(id) {
+    if (id === 3) {
+      return tabsUser;
+    } else if (id === 2) {
+      return tabsAdmin;
+    } else {
+      return tabsHeadAdmin;
+    }
+  }
 
   return (
     <div className='main'>
