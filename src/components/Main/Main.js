@@ -18,8 +18,6 @@ function Main({ loggedIn, onLogout }) {
 
   const user = React.useContext(CurrentUserContext);
 
-  console.log(user);
-
   const tabsHeadAdmin = [
     {
       title: 'Тестирование',

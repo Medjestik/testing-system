@@ -172,7 +172,7 @@ function ControlUserEditPopup({ isOpen, onClose, onEdit, isLoading, isShowError,
   return(
     <Popup isOpen={isOpen} onClose={onClose} >
       <form className="popup__form popup__form_type_large" name="control-user-edit-form" action="#" noValidate onSubmit={handleSubmit}>
-        <h3 className="popup__title">Добавление нового пользователя</h3>
+        <h3 className="popup__title">Редактирование пользователя</h3>
         <ul className="popup__list-input">
           <li className="popup__item-input">
             <h5 className="popup__input-name">Фамилия*</h5>

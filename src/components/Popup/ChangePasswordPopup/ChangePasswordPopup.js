@@ -77,7 +77,7 @@ function ChangePasswordPopup({ isOpen, onConfirm, isLoadingRequest }) {
     <div className="popup__container">
       <div className='popup__form'>
           <h2 className='popup__title'>Изменения пароля</h2>
-          <p className='popup__subtitle'>Вам необходимо изменить пароль.</p>
+          <p className='popup__subtitle'>Пароль должен содержать не менее 12 символов и состоять как минимум из строчных и прописных символов латинского алфавита, цифр и знаков препинания.</p>
 
           <label className='popup__item-input'>
             <h4 className='popup__input-name'>Пароль:</h4>
