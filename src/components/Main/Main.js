@@ -63,7 +63,7 @@ function Main({ loggedIn, onLogout }) {
     },
   ]
 
-  const [isOpenChangePasswordPopup, setIsOpenChangePasswordPopup] = React.useState(user.change_password === 1 ? true : false); 
+  const [isOpenChangePasswordPopup, setIsOpenChangePasswordPopup] = React.useState(user.change_password == 1 ? true : false); 
 
   const [isLoadingRequest, setIsLoadingRequest] = React.useState(false);
 
