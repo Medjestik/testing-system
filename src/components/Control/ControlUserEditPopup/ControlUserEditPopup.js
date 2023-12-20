@@ -22,6 +22,7 @@ function ControlUserEditPopup({ isOpen, onClose, onEdit, isLoading, isShowError,
   const [userPhoto, setUserPhoto] = React.useState(currentUser.test.userPhoto);
   const [phone, setPhone] = React.useState("");
   const [mail, setMail] = React.useState("");
+  const [date, setDate] = React.useState(currentUser.valid_till);
   const [isBlockSubmitButton, setIsBlockSubmitButton] = React.useState(true);
 
   function handleSubmit(e) {
@@ -42,6 +43,7 @@ function ControlUserEditPopup({ isOpen, onClose, onEdit, isLoading, isShowError,
       id: currentUser.id,
       phone: phone,
       email: mail,
+      valid_till: date,
     }
 
     onEdit(newUser, onClose);
@@ -112,6 +114,10 @@ function ControlUserEditPopup({ isOpen, onClose, onEdit, isLoading, isShowError,
     setMail(e.target.value);
   }
 
+  function handleChangeDate(e) {
+    setDate(e.target.value);
+  }
+
   function handleChangeAttempts(e) {
     setAttempts(e.target.value);
     if (e.target.checkValidity()) {
@@ -141,6 +147,7 @@ function ControlUserEditPopup({ isOpen, onClose, onEdit, isLoading, isShowError,
     setUserPhoto(currentUser.test.userPhoto);
     setPhone(currentUser.phone);
     setMail(currentUser.email);
+    setDate(currentUser.valid_till);
     setIsBlockSubmitButton(true);
   }, [isOpen, currentUser]);
 
@@ -372,6 +379,21 @@ function ControlUserEditPopup({ isOpen, onClose, onEdit, isLoading, isShowError,
                 autoComplete="off"
                 value={mail || ""}
                 onChange={handleChangeMail}
+                required
+                >
+                </input>
+              </li>
+              <li className="popup__item-input">
+                <h5 className="popup__input-name">Дата</h5>
+                <input 
+                className="popup__input"
+                placeholder="введите дату"
+                type="date"
+                id="add-new-user-date"
+                name="add-new-user-date"
+                autoComplete="off"
+                value={date || ""}
+                onChange={handleChangeDate}
                 required
                 >
                 </input>

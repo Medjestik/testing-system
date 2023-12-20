@@ -95,8 +95,8 @@ function Control() {
     const token = localStorage.getItem("token");
     api.editUser({ token: token, user: user })
     .then((res) => {
-      const index = users.indexOf(users.find((elem) => (elem.id === res.data.id)));
-      setUsers([...users.slice(0, index), res.data, ...users.slice(index + 1)]);
+      const index = users.data.indexOf(users.data.find((elem) => (elem.id === res.data.id)));
+      setUsers({...users, data: [...users.data.slice(0, index), res.data, ...users.data.slice(index + 1)]});
       closeControlPopups();
     })
     .catch((err) => {

@@ -3,6 +3,7 @@ import './ScreenPhotoPopup.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import Popup from '../Popup/Popup.js';
 import Webcam from "react-webcam";
+import { API_URL } from '../../utils/config.js';
 
 function ScreenPhotoPopup({ isOpen, onClose, onAdd, isLoading, isShowMessage }) { 
 
@@ -71,7 +72,7 @@ function ScreenPhotoPopup({ isOpen, onClose, onAdd, isLoading, isShowMessage }) 
         </div>
 
         <span className={`popup__submit-error ${isShowMessage.isShow ? "popup__submit-error_type_show" : "popup__submit-error_type_hide"}`}>{isShowMessage.isShow ? isShowMessage.text : ""}</span>
-        <a className={`btn test-item__btn-start screen-photo-popup__link ${!isShowMessage.success ? 'screen-photo-popup__link_type_block' : '' }`} target="_self" href={process.env.PUBLIC_URL + "/kst/index.html?USER_NAME=" + user.id}>Начать тестирование</a>
+        <a className={`btn test-item__btn-start screen-photo-popup__link ${!isShowMessage.success ? 'screen-photo-popup__link_type_block' : '' }`} target="_self" href={`${API_URL}/start_test?code=${user.code}`}>Начать тестирование</a>
 
       </form>
     </Popup>

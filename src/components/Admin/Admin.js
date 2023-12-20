@@ -6,6 +6,7 @@ import Table from '../Table/Table.js';
 import Pagination from '../Pagination/Pagination.js';
 import RequestPopup from '../Popup/RequestPopup/RequestPopup.js';
 import ConfirmRemovePopup from '../Popup/ConfirmRemovePopup/ConfirmRemovePopup.js';
+import { API_URL } from '../../utils/config.js';
 
 function Admin() {
 
@@ -118,7 +119,7 @@ function Admin() {
         <div className='section__header'>
           <Pagination data={logs} onChoose={getPage} />
           <button className="btn btn_type_add btn_margin-left_auto" type="button" onClick={openRequestRemovePopup}>SQL-запрос</button>
-          <a className="btn btn_type_export btn_margin-left_20" href='https://kst.emiit.ru/api/logs/export_logs' target='_blank' rel='noreferrer'>Экспорт логов</a>
+          <a className="btn btn_type_export btn_margin-left_20" href={`${API_URL}/logs/export_logs`} target='_blank' rel='noreferrer'>Экспорт логов</a>
           <button className="btn btn_type_edit btn_margin-left_20" type="button" onClick={openConfirmRemovePopup}>Очистка логов старше 90 дней</button>
         </div>
 

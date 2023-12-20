@@ -2,6 +2,7 @@ import React from 'react';
 import './TestItem.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import { PieChart } from 'react-minimal-pie-chart';
+import { API_URL } from '../../utils/config.js';
 
 function TestItem({ item, onScreenPhoto }) {
 
@@ -26,7 +27,7 @@ function TestItem({ item, onScreenPhoto }) {
       )
     } else {
       return (
-        <a className='btn test-item__btn-start' target="_self" href={process.env.PUBLIC_URL + "/kst/index.html?USER_NAME=" + user.id}>Начать тестирование</a>
+        <a className='btn test-item__btn-start' target="_self" href={`${API_URL}/start_test?code=${user.code}`}>Начать тестирование</a>
       )
     }
   }
@@ -51,7 +52,7 @@ function TestItem({ item, onScreenPhoto }) {
             }
             {
               item.useTrain ?
-              <a className='btn test-item__btn-try' target="_blank" rel="noreferrer" href="https://kst-api.emiit.ru/train/index.html">Тренировка</a>
+              <a className='btn test-item__btn-try' target="_blank" rel="noreferrer" href={process.env.PUBLIC_URL + '/train/index.html'}>Тренировка</a>
               :
               <div></div>
             }
