@@ -384,7 +384,7 @@ function ControlUserEditPopup({ isOpen, onClose, onEdit, isLoading, isShowError,
                 </input>
               </li>
               <li className="popup__item-input">
-                <h5 className="popup__input-name">Дата</h5>
+                <h5 className="popup__input-name">Дата доступа</h5>
                 <input 
                 className="popup__input"
                 placeholder="введите дату"

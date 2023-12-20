@@ -11,7 +11,7 @@ function App() {
 
   const [currentUser, setCurrentUser] = React.useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
-  const [loginError, setLoginError] = React.useState(false);
+  const [loginError, setLoginError] = React.useState({text: '', isShow: false});
   const [isLoadingPage, setIsLoadingPage] = React.useState(false);
   const [isLoadingLogin, setIsLoadingLogin] = React.useState(false);
 
@@ -19,7 +19,7 @@ function App() {
   const navigate = useNavigate();
 
   function handleLogin({ login, password }) {
-    setLoginError(false);
+    setLoginError({text: '', isShow: false});
     setIsLoadingLogin(true);
     api.login({ login, password })
     .then((res) => {
@@ -27,7 +27,11 @@ function App() {
       tokenCheck();
     })
     .catch((err) => {
-      setLoginError(true);
+      if (err.status === 403) {
+        setLoginError({text: 'Срок действия учетной записи истек', isShow: true});
+      } else {
+        setLoginError({text: 'Неправильный логин или пароль', isShow: true});
+      }
     })
     .finally(() => {
       setIsLoadingLogin(false);
@@ -35,7 +39,7 @@ function App() {
   }
 
   function handleLoginUser({ name, code }) {
-    setLoginError(false);
+    setLoginError({text: '', isShow: false});
     setIsLoadingLogin(true);
     api.loginUser({ name, code })
     .then((res) => {
@@ -43,7 +47,11 @@ function App() {
       tokenCheck();
     })
     .catch((err) => {
-      setLoginError(true);
+      if (err.status === 403) {
+        setLoginError({text: 'Срок действия учетной записи истек', isShow: true});
+      } else {
+        setLoginError({text: 'Введены неправильные данные', isShow: true});
+      }
     })
     .finally(() => {
       setIsLoadingLogin(false);
@@ -51,7 +59,7 @@ function App() {
   }
 
   function handleHideLoginError() {
-    setLoginError(false);
+    setLoginError({text: '', isShow: false});
   }
 
   function tokenCheck() {

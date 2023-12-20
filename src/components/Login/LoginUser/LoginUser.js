@@ -115,8 +115,8 @@ function LoginUser({ onLogin, loginError, onHideLoginError, isLoadingLogin }) {
         </span>
       </div>
       <div className="login__submit">
-        <span className={`login__submit-error ${loginError ? "login__submit-error_type_show" : "login__submit-error_type_hide"}`}> 
-          Неправильный код доступа
+        <span className={`login__submit-error ${loginError.isShow ? "login__submit-error_type_show" : "login__submit-error_type_hide"}`}> 
+          {loginError.text}
         </span>
         <button 
           className={`login__submit-button ${blockSubmitButton ? "login__submit-button_type_block" : ""} ${isLoadingLogin ? "login__submit-button_type_block" : ""}`} 
