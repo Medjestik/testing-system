@@ -116,7 +116,15 @@ function Report() {
           >
             Поиск
           </button>
-          <a className="btn btn_type_export" type="button" target='_blank' rel='noreferrer' href={`${API_URL}/report/export_report`}>Экспорт отчета</a>
+          <a 
+          className="btn btn_type_export" 
+          type="button" 
+          target='_blank' 
+          rel='noreferrer' 
+          href={`${API_URL}/report/export_report?startDate=${startDate}&endDate=${endDate}`}
+          >
+            Экспорт отчета
+          </a>
         </div>
 
         {
