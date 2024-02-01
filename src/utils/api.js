@@ -229,7 +229,19 @@ export const getPage = ({ token, link }) => {
   .then(res => handleResponse(res))
 };
 
-export const searchPage = ({ token, searchText }) => {
+export const searchResultPage = ({ token, searchText }) => {
+  return fetch(`${API_URL}/result?search=${searchText}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(res => handleResponse(res))
+};
+
+export const searchControlPage = ({ token, searchText }) => {
   return fetch(`${API_URL}/control?search=${searchText}`, {
     method: 'GET',
     headers: {
@@ -253,8 +265,8 @@ export const getLogs = ({ token }) => {
   .then(res => handleResponse(res))
 };
 
-export const getReports = ({ token, year }) => {
-  return fetch(`${API_URL}/report?year=${year}`, {
+export const getReports = ({ token, startDate, endDate }) => {
+  return fetch(`${API_URL}/report?startDate=${startDate}&endDate=${endDate}`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',

@@ -2,68 +2,62 @@ import React from 'react';
 import './Result.css';
 import * as api from '../../utils/api.js';
 import Preloader from '../Preloader/Preloader.js';
+import Pagination from '../Pagination/Pagination.js';
 import ResultItem from '../ResultItem/ResultItem.js';
 
 function Result() {
 
-  const [isLoadingResult, setIsLoadingResult] = React.useState(false);
   const [result, setResult] = React.useState([]);
-  const [links, setLinks] = React.useState({});
   const [currentResult, setCurrentResult] = React.useState({});
 
-  function getNextPage() {
-    console.log(links);
-    setIsLoadingResult(true);
-    const token = localStorage.getItem("token");
-    if (token) {
-      api.getPage({ token: token, link: links.next })
-        .then((res) => {
-          console.log(res);
-          setResult(res.data);
-          setLinks(res.links);
-        })
-        .catch((err) => {
-            console.error(err);
-        })
-        .finally(() => {
-          setIsLoadingResult(false);
-        });
-      }
+  const [searchText, setSearchText] = React.useState('');
+
+  const [isLoadingResult, setIsLoadingResult] = React.useState(false);
+  const [isLoadingPage, setIsLoadingPage] = React.useState(true);
+
+  function handleChangeSearch(e) {
+    setSearchText(e.target.value);
   }
 
-  function getPrevPage() {
+  function getPage(link) {
     setIsLoadingResult(true);
     const token = localStorage.getItem("token");
-    if (token) {
-      api.getPage({ token: token, link: links.prev })
-        .then((res) => {
-          console.log(res);
-          setResult(res.data);
-          setLinks(res.links);
-        })
-        .catch((err) => {
-            console.error(err);
-        })
-        .finally(() => {
-          setIsLoadingResult(false);
-        });
-      }
+    api.getPageData({ token: token, link: link })
+    .then((res) => {
+      setResult(res);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => setIsLoadingResult(false));
+  }
+
+  function onSearch() {
+    setIsLoadingResult(true);
+    const token = localStorage.getItem("token");
+    api.searchResultPage({ token: token, searchText: searchText })
+    .then((res) => {
+      setResult(res);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => setIsLoadingResult(false));
   }
 
   React.useEffect(() => {
-    setIsLoadingResult(true);
+    setIsLoadingPage(true);
     const token = localStorage.getItem("token"); 
     if (token) {
       api.getResult({ token: token })
         .then((res) => {
-          setResult(res.data);
-          setLinks(res.links);
+          setResult(res);
         })
         .catch((err) => {
             console.error(err);
         })
         .finally(() => {
-          setIsLoadingResult(false);
+          setIsLoadingPage(false);
         });
       }
     return (() => {
@@ -75,22 +69,28 @@ function Result() {
   return (
     <div className='result'>
       {
-        isLoadingResult 
+        isLoadingPage
         ?
         <Preloader />
         :
         <>
-        <div className='result__pagination'>
-          <button className={`btn result__pagination-btn ${links.prev === null ? "result__pagination-btn_type_block" : ""}`} type='button' onClick={getPrevPage}>Назад</button>
-          <button className={`btn result__pagination-btn ${links.next === null ? "result__pagination-btn_type_block" : ""}`} type='button' onClick={getNextPage}>Далее</button>
+        <div className='section__header'>
+          <Pagination data={result} onChoose={getPage} />
+          <input className='search search_margin_left search_border_left' id='result-search' type='text' name='control-search' value={searchText} onChange={handleChangeSearch} placeholder='Введите текст запроса..'></input>
+          <button className='search-btn search-btn_border_right' onClick={onSearch}>Поиск</button>
         </div>
-        <ul className='result__list'>
-          {
-            result.map((res) => (
-              <ResultItem result={res} key={res.id} />
-            ))
+        {
+          isLoadingResult ?
+          <Preloader />
+          :
+          <ul className='result__list'>
+            {
+              result.data.map((res) => (
+                <ResultItem result={res} key={res.id} />
+              ))
+            }
+          </ul>
           }
-        </ul>
         </>
       }
 

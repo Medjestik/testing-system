@@ -51,9 +51,8 @@ function Control() {
 
   function onSearch() {
     setIsLoadingPage(true);
-    console.log(searchText);
     const token = localStorage.getItem("token");
-    api.searchPage({ token: token, searchText: searchText })
+    api.searchControlPage({ token: token, searchText: searchText })
     .then((res) => {
       console.log(res);
       setUsers(res);
@@ -179,8 +178,8 @@ function Control() {
         <> 
           <div className='section__header'>
             <Pagination data={users} onChoose={getPage} />
-            <input className='search' id='control-search' name='control-search' value={searchText} onChange={handleChangeSearch} placeholder='Введите текст запроса..'></input>
-            <button className='search-btn' onClick={onSearch}>Поиск</button>
+            <input className='search search_margin_left search_border_left' id='control-search' type='text' name='control-search' value={searchText} onChange={handleChangeSearch} placeholder='Введите текст запроса..'></input>
+            <button className='search-btn search-btn_margin_right search-btn_border_right' onClick={onSearch}>Поиск</button>
             <button className="btn btn_type_add" type="button" onClick={openAddUserPopup}>{user.role_id === 1 ? 'Добавить пользователя' : 'Добавить тестируемого'}</button>
           </div>
 

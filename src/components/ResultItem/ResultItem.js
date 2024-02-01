@@ -25,22 +25,26 @@ function ResultItem({ result }) {
       <div className='result-item__container'>
         <div className='result-item__section-info'>
           <h4 className='result-item__name'>{result.name}</h4>
-          <p className='result-item__test'>{result.tests[0].name}</p>
-          <div className='result-item__control'>
-            {
-              result.tests[0].attempts.length > 0 &&
-              <>
-              <button className={`btn result-item__btn-attempt ${isShowPerformers ? 'result-item__btn-attempt_type_show' : 'result-item__btn-attempt_type_hide'}`} type='button' onClick={toggleProgramPerformers}>Показать попытки</button>
-              <a className='btn result-item__btn-export' target='_blank' rel='noreferrer' href={`${API_URL}/users/${result.id}/tests/${result.tests[0].id}/protocol`}>Экспорт результатов</a>
-              </>
-            }
-
-          </div>
+          {
+            result.tests.length > 0 &&
+            <>
+            <p className='result-item__test'>{result.tests[0].name || ''}</p>
+            <div className='result-item__control'>
+              {
+                result.tests[0].attempts.length > 0 &&
+                <>
+                <button className={`btn result-item__btn-attempt ${isShowPerformers ? 'result-item__btn-attempt_type_show' : 'result-item__btn-attempt_type_hide'}`} type='button' onClick={toggleProgramPerformers}>Показать попытки</button>
+                <a className='btn result-item__btn-export' target='_blank' rel='noreferrer' href={`${API_URL}/users/${result.id}/tests/${result.tests[0].id}/protocol`}>Экспорт результатов</a>
+                </>
+              }
+            </div>
+            </>
+          }
         </div>
 
         <div className='result-item__section-chart'>
           <PieChart
-            data={[{ value: Number(result.tests[0].currentPercent), color: '#e21a1a' }]}
+            data={[{ value: result.tests.length > 0 ? Number(result.tests[0].currentPercent) : 0, color: '#e21a1a' }]}
             totalValue={100}
             lineWidth={18}
             paddingAngle={2}
@@ -58,6 +62,8 @@ function ResultItem({ result }) {
         </div>
       </div>
       {
+        result.tests.length > 0
+        &&
         result.tests[0].attempts.length > 0 &&
           <ul className={`result-item__attempt-list ${isShowPerformers ? 'result-item__attempt-list_type_show' : 'result-item__attempt-list_type_hide'}`}>
             {

@@ -237,19 +237,28 @@ html {
   background: var(--background-third-color);
   border: none;
   border: 2px solid var(--border-card-color);
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
   box-sizing: border-box;
   color: var(--title-color);
   font-size: 14px;
   line-height: 18px;
   font-style: normal;
   font-weight: normal;
-  margin: 0px 0px 0px 20px;
+  margin: 0px;
   outline: none;
   padding: 8px 11px;
   transition: all .3s ease-in-out;
   width: 100%;
+}
+.search_border_right {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.search_border_left {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.search_margin_left {
+  margin-left: 20px;
 }
 .search:focus {
   border: 2px solid var(--fourth-light-color);
@@ -258,12 +267,10 @@ html {
   border: 2px solid var(--fourth-light-color);
 }
 .search-btn {
-  margin: 0px 20px 0px 0px;
+  margin: 0px;
   color: var(--white-color);
   box-sizing: border-box;
   border: none;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
@@ -277,9 +284,30 @@ html {
   position: relative;
   flex-shrink: 0;
 }
+.search-btn_border_left {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.search-btn_border_right {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.search-btn_margin_right {
+  margin-right: 20px;
+}
+.search-btn_margin_left {
+  margin-left: 20px;
+}
 .search-btn:hover {
   cursor: pointer;
   opacity: .7;
+}
+.search__separate {
+  margin: 0px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 .ReactCollapse--collapse {
   transition: height 500ms;
