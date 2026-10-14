@@ -29,6 +29,9 @@ function Register({ onRegister, registerError, onHideRegisterError, isLoadingReg
   const [filials, setFilials] = React.useState([]);
   const [filialsError, setFilialsError] = React.useState('');
   const [fieldErrors, setFieldErrors] = React.useState({});
+  const isPasswordOk = isPasswordValid(password)
+    && passwordConfirmation.length > 0
+    && passwordConfirmation === password;
 
   React.useEffect(() => {
     api.getPublicFilials()
@@ -168,7 +171,12 @@ function Register({ onRegister, registerError, onHideRegisterError, isLoadingReg
                   {fieldErrors.email}
                 </span>
               </div>
-              <p className="register__hint register__password-rules">{PASSWORD_RULES_TEXT}</p>
+              <p className={`register__hint register__password-rules ${isPasswordOk ? 'register__password-rules_ok' : ''}`}>
+                {isPasswordOk && (
+                  <span className="register__password-check" aria-hidden="true">✓</span>
+                )}
+                <span>{PASSWORD_RULES_TEXT}</span>
+              </p>
               <div className="login__form-line">
                 <input
                   className="login__input"

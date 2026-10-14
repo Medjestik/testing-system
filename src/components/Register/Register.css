@@ -15,6 +15,28 @@
   line-height: 1.3;
 }
 .register__password-rules {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
   text-align: left;
   margin-bottom: 8px;
+  transition: color 0.2s ease;
+}
+.register__password-rules_ok {
+  color: #2e7d32;
+}
+.register__password-check {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background-color: #2e7d32;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
 }
