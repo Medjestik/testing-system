@@ -42,14 +42,14 @@ export const getPublicFilials = () => {
   .then(res => handleResponse(res));
 };
 
-export const register = ({ lastname, firstname, middlename, email, filial_id }) => {
+export const register = ({ lastname, firstname, middlename, email, filial_id, password, password_confirmation }) => {
   return fetch(`${API_URL}/register`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ lastname, firstname, middlename, email, filial_id })
+    body: JSON.stringify({ lastname, firstname, middlename, email, filial_id, password, password_confirmation })
   })
   .then(res => handleResponse(res));
 };

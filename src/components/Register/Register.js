@@ -7,12 +7,24 @@ import logo from '../../images/rzd-logo.png';
 import * as api from '../../utils/api.js';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PASSWORD_RULES_TEXT = 'Пароль должен содержать не менее 12 символов и состоять как минимум из строчных и прописных символов латинского алфавита, цифр и знаков препинания.';
+
+function isPasswordValid(value) {
+  const isLengthValid = value.length >= 12;
+  const hasLowerCase = /[a-z]/.test(value);
+  const hasUpperCase = /[A-Z]/.test(value);
+  const hasDigit = /\d/.test(value);
+  const hasSpecialChar = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(value);
+  return isLengthValid && hasLowerCase && hasUpperCase && hasDigit && hasSpecialChar;
+}
 
 function Register({ onRegister, registerError, onHideRegisterError, isLoadingRegister }) {
   const [lastname, setLastname] = React.useState('');
   const [firstname, setFirstname] = React.useState('');
   const [middlename, setMiddlename] = React.useState('');
   const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [passwordConfirmation, setPasswordConfirmation] = React.useState('');
   const [filialId, setFilialId] = React.useState('');
   const [filials, setFilials] = React.useState([]);
   const [filialsError, setFilialsError] = React.useState('');
@@ -47,6 +59,16 @@ function Register({ onRegister, registerError, onHideRegisterError, isLoadingReg
     } else if (!EMAIL_PATTERN.test(email.trim())) {
       nextErrors.email = 'Укажите корректный email';
     }
+    if (!password) {
+      nextErrors.password = 'Укажите пароль';
+    } else if (!isPasswordValid(password)) {
+      nextErrors.password = 'Пароль не соответствует правилам безопасности';
+    }
+    if (!passwordConfirmation) {
+      nextErrors.passwordConfirmation = 'Подтвердите пароль';
+    } else if (passwordConfirmation !== password) {
+      nextErrors.passwordConfirmation = 'Пароли не совпадают';
+    }
     if (!filialId) {
       nextErrors.filialId = 'Выберите филиал';
     }
@@ -67,6 +89,8 @@ function Register({ onRegister, registerError, onHideRegisterError, isLoadingReg
       firstname: firstname.trim(),
       middlename: middlename.trim(),
       email: email.trim(),
+      password,
+      password_confirmation: passwordConfirmation,
       filial_id: Number(filialId),
     });
   }
@@ -81,7 +105,7 @@ function Register({ onRegister, registerError, onHideRegisterError, isLoadingReg
             <h1 className='page__title'>Регистрация</h1>
           </div>
           <div className='page__auth'>
-            <p className='page__subtitle'>Укажите ФИО, email и филиал</p>
+            <p className='page__subtitle'>Укажите ФИО, email, пароль и филиал</p>
             <form className="login__form register__form" name="register-form" noValidate onSubmit={handleSubmit} autoComplete="off">
               <div className="login__form-line">
                 <input
@@ -142,6 +166,43 @@ function Register({ onRegister, registerError, onHideRegisterError, isLoadingReg
                 />
                 <span className={`login__input-error ${fieldErrors.email ? "login__input-error_active" : ""}`}>
                   {fieldErrors.email}
+                </span>
+              </div>
+              <p className="register__hint register__password-rules">{PASSWORD_RULES_TEXT}</p>
+              <div className="login__form-line">
+                <input
+                  className="login__input"
+                  placeholder="Пароль"
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    clearFieldError('password');
+                  }}
+                  required
+                  autoComplete="new-password"
+                />
+                <span className={`login__input-error ${fieldErrors.password ? "login__input-error_active" : ""}`}>
+                  {fieldErrors.password}
+                </span>
+              </div>
+              <div className="login__form-line">
+                <input
+                  className="login__input"
+                  placeholder="Подтверждение пароля"
+                  type="password"
+                  name="password_confirmation"
+                  value={passwordConfirmation}
+                  onChange={(e) => {
+                    setPasswordConfirmation(e.target.value);
+                    clearFieldError('passwordConfirmation');
+                  }}
+                  required
+                  autoComplete="new-password"
+                />
+                <span className={`login__input-error ${fieldErrors.passwordConfirmation ? "login__input-error_active" : ""}`}>
+                  {fieldErrors.passwordConfirmation}
                 </span>
               </div>
               <div className="login__form-line">
