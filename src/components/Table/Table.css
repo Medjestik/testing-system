@@ -21,6 +21,10 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .table__container_margin_top {
   margin: 12px 0px 0px 0px;
@@ -28,6 +32,7 @@
 .table__header {
   margin: 0px;
   width: 100%;
+  min-width: 720px;
   display: flex;
   align-items: center;
 }
@@ -122,6 +127,7 @@
   padding: 0px 8px 0px 0px;
   list-style-type: none;
   flex-grow: 0;
+  min-width: 720px;
 }
 .table__main_height_smallest {
   height: 101px;
@@ -197,8 +203,10 @@
   flex-shrink: 0;
 }
 .table__column_type_large {
-  width: 244px;
-  flex-shrink: 0;
+  width: auto;
+  flex: 1 1 140px;
+  min-width: 120px;
+  max-width: 244px;
 }
 .table__column_type_full {
   width: 100%;

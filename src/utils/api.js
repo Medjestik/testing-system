@@ -20,6 +20,40 @@ export const login = ({ login, password }) => {
   .then(res => handleResponse(res));
 };
 
+export const getPublicSettings = () => {
+  return fetch(`${API_URL}/settings/public`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => handleResponse(res));
+};
+
+export const getPublicFilials = () => {
+  return fetch(`${API_URL}/filials/public`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => handleResponse(res));
+};
+
+export const register = ({ lastname, firstname, middlename, email, filial_id }) => {
+  return fetch(`${API_URL}/register`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ lastname, firstname, middlename, email, filial_id })
+  })
+  .then(res => handleResponse(res));
+};
+
 export const loginUser = ({ name, code }) => {
   return fetch(`${API_URL}/test_login`, {
     method: 'POST', 
@@ -251,6 +285,56 @@ export const searchControlPage = ({ token, searchText }) => {
     }
   })
   .then(res => handleResponse(res))
+};
+
+export const getSettings = ({ token }) => {
+  return fetch(`${API_URL}/settings`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(res => handleResponse(res));
+};
+
+export const createSetting = ({ token, key, value }) => {
+  return fetch(`${API_URL}/settings`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify({ key, value })
+  })
+  .then(res => handleResponse(res));
+};
+
+export const updateSetting = ({ token, id, key, value }) => {
+  return fetch(`${API_URL}/settings/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify({ key, value })
+  })
+  .then(res => handleResponse(res));
+};
+
+export const deleteSetting = ({ token, id }) => {
+  return fetch(`${API_URL}/settings/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    }
+  })
+  .then(res => handleResponse(res));
 };
 
 export const getLogs = ({ token }) => {

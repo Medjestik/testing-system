@@ -1,0 +1,16 @@
+.register__form {
+  max-width: 100%;
+}
+.register__select {
+  appearance: none;
+  background-color: var(--white-color);
+  cursor: pointer;
+}
+.register__hint {
+  margin: 0 0 12px;
+  width: 100%;
+  text-align: center;
+  color: var(--main-color);
+  font-size: 14px;
+  line-height: 1.3;
+}

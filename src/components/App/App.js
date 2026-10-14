@@ -6,14 +6,18 @@ import Preloader from '../Preloader/Preloader.js';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import Page from '../Page/Page.js';
 import Main from '../Main/Main.js';
+import Register from '../Register/Register.js';
+import { parseApiError } from '../../utils/parseApiError.js';
 
 function App() {
 
   const [currentUser, setCurrentUser] = React.useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [loginError, setLoginError] = React.useState({text: '', isShow: false});
+  const [registerError, setRegisterError] = React.useState({text: '', isShow: false});
   const [isLoadingPage, setIsLoadingPage] = React.useState(false);
   const [isLoadingLogin, setIsLoadingLogin] = React.useState(false);
+  const [isLoadingRegister, setIsLoadingRegister] = React.useState(false);
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -62,6 +66,28 @@ function App() {
     setLoginError({text: '', isShow: false});
   }
 
+  function handleHideRegisterError() {
+    setRegisterError({text: '', isShow: false});
+  }
+
+  function handleRegister(payload) {
+    setRegisterError({text: '', isShow: false});
+    setIsLoadingRegister(true);
+    api.register(payload)
+    .then((res) => {
+      localStorage.setItem("token", res.access_token);
+      tokenCheck();
+    })
+    .catch((err) => {
+      parseApiError(err).then((text) => {
+        setRegisterError({text, isShow: true});
+      });
+    })
+    .finally(() => {
+      setIsLoadingRegister(false);
+    });
+  }
+
   function tokenCheck() {
     const token = localStorage.getItem("token");
     if (token) {
@@ -71,7 +97,7 @@ function App() {
           if (res) {
             setLoggedIn(true);
             setCurrentUser(res);
-            if (pathname === "/") {
+            if (pathname === "/" || pathname === "/register") {
               navigate("/main/test");
             } else {
               navigate(pathname);
@@ -112,7 +138,7 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-    <div className="page">
+    <div className="app">
       {
         isLoadingPage ?
         <Preloader />
@@ -125,6 +151,16 @@ function App() {
               loginError={loginError}
               onHideLoginError={handleHideLoginError}
               isLoadingLogin={isLoadingLogin}
+            />
+          }
+          />
+
+          <Route path="/register" element={
+            <Register
+              onRegister={handleRegister}
+              registerError={registerError}
+              onHideRegisterError={handleHideRegisterError}
+              isLoadingRegister={isLoadingRegister}
             />
           }
           />
